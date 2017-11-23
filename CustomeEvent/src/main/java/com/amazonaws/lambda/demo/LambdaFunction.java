@@ -14,20 +14,17 @@ public class LambdaFunction implements RequestHandler<Object, String> {
     public String handleRequest(Object input, Context context) {    	
     	  	
     	JSONObject jsonObj = null;
-    	
+    			
 		try {
 			
 			jsonObj = new JSONObject(new ObjectMapper().writeValueAsString(input));
-			context.getLogger().log("jsonObj:" + jsonObj);			
+			context.getLogger().log("jsonObj:" + jsonObj);		
 			
-		} catch (JSONException e) {
+		} catch (JsonProcessingException | JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}      
-    	
+		}		
+		
         // TODO: implement your handler
         return "Hello from Lambda!";
     }
